@@ -90,6 +90,26 @@
             font-size: 1.3rem;
         }
     }
+
+    #date {
+  width: 150px;
+  outline: none;
+  border: 1px solid #aaa;
+  padding: 6px 28px;
+  color: #aaa;
+}
+
+.date-container {
+  position: relative;
+}
+ 
+  .date-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* pointer-events: none; */
+    cursor: pointer;
+  }
 </style>
 
 <body class="header-section">
@@ -121,14 +141,13 @@
                         </div>
                     </div>
                     <div class=" col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mb-2">
-                        <div class="" style="width:100%;">
-                            <div style="width:15% ;" class="d-inline-block">
-                                <i class="fas fa-calendar-alt fa-lg iconcolor" aria-hidden="true"></i>
-                            </div>
-                            <div style="width:80% ;" class="d-inline-block">
-                                <input class="form-control p-1 py-2" type="date" name="tododate" id="tododate">
-                            </div>
-                        </div>
+                           
+                                <div class="date-container">
+                                    <input class="form-control p-1 py-2" type="date" name="tododate" id="tododate">
+                          
+                                    <i class="fas fa-calendar-alt fa-lg iconcolor date-icon" aria-hidden="true"></i>
+                                </div>
+                      
                     </div>
 
                     <div class=" col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mb-2">
@@ -179,7 +198,7 @@
                         <h2 class="my-2 taskstitle">Task List</h2>
                     </div>
 
-                    <table class="table table-hover">
+                    <table class="table table-hover position-sticky">
                         <thead>
                             <tr>
                                 <td class="text-left tableheaderele p-1"><b>Task Name</b></td>

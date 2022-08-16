@@ -42,7 +42,7 @@ function displaytodo() {
       <td class="text-left text-td p-1 pb-0">${task.name}</td>
       <td class="text-left text-td p-1 pb-0">${task.date}</td>
       <td class="text-center text-td p-1 pb-0"><span class="badge bg-${priorityColor[`${task.priority}`]}">${task.priority} </span> </td>
-      <td class="text-center p-1 pb-0">
+      <td class="text-center p-0">
         <i class="fa fa-trash text-danger deletetask" onclick=deletetask(${index})></i>
         <i class="fa fa-edit text-success updatetask" onclick=updatetask(${index})></i>
       </td>
@@ -88,7 +88,6 @@ window.onload = function () {
   tasksListArray = JSON.parse(localStorage.getItem("todo"));
   console.log(tasksListArray);
   if (tasksListArray) {
-    console.log(tasksListArray);
     displaytodo();
   } else {
     displaynorecord();
@@ -107,7 +106,7 @@ document.getElementById("clearallbtn").onclick = function () {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
       tasksListArray = [];
-      displaytodo();
+      displaynorecord();
       localStorage.removeItem("todo");
     } else if (result.isDenied) {
       Swal.fire("Changes are not saved", "", "info");
@@ -115,13 +114,3 @@ document.getElementById("clearallbtn").onclick = function () {
   });
 };
 
-// Export
-
-document.getElementById("exportdata").onclick = function () {
-  var data = "";
-
-  var exportLink = document.createElement("a");
-  exportLink.setAttribute("href", "data:text/csv;base64," + window.btoa(data));
-  exportLink.appendChild(document.createTextNode("test.csv"));
-  document.getElementById("results").appendChild(exportLink);
-};
