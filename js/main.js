@@ -2,6 +2,11 @@
 var addTaskBtn;
 var tasksListArray = [];
 var task = {};
+var priorityColor = { 
+  'High':'danger',
+  'Low':'success', 
+  'Medium':'info'
+}
 
 // Tool tip
 var Tooltips = document.getElementsByClassName("tt");
@@ -36,7 +41,7 @@ function displaytodo() {
     taskTable += `<tr>
       <td class="text-left text-td p-1 pb-0">${task.name}</td>
       <td class="text-left text-td p-1 pb-0">${task.date}</td>
-      <td class="text-center text-td p-1 pb-0"><span class="badge bg-danger">${task.priority} </span> </td>
+      <td class="text-center text-td p-1 pb-0"><span class="badge bg-${priorityColor[`${task.priority}`]}">${task.priority} </span> </td>
       <td class="text-center p-1 pb-0">
         <i class="fa fa-trash text-danger deletetask" onclick=deletetask(${index})></i>
         <i class="fa fa-edit text-success updatetask" onclick=updatetask(${index})></i>
