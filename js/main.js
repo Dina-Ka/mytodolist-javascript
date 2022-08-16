@@ -7,7 +7,7 @@ var priorityColor = {
   Low: "success",
   Medium: "info",
 };
-
+var currentUpdatedRow;
 // Tool tip
 var Tooltips = document.getElementsByClassName("tt");
 Array.from(Tooltips).forEach((element) => {
@@ -20,6 +20,7 @@ addtaskbtn = document.getElementById("addtask");
 addtaskbtn.onclick = function () {
   appendNewTask();
   displaytodo();
+  clearinputs();
 };
 
 function appendNewTask() {
@@ -89,6 +90,8 @@ function deletetask(id) {
 window.onload = function () {
   tasksListArray = JSON.parse(localStorage.getItem("todo"));
   checkdisplay();
+  document.getElementById("updatetask").style.display = "none";
+  clearinputs();
 };
 
 function checkdisplay() {
@@ -125,8 +128,10 @@ document.getElementById("searchinput").onkeyup = function () {
   if (this.value.length) {
     var taskTable = "";
     tasksListArray.forEach((task, index) => {
-
-      if (task.name.toLowerCase().includes(this.value.toLowerCase()) || task.priority.toLowerCase().includes(this.value.toLowerCase()) ) {
+      if (
+        task.name.toLowerCase().includes(this.value.toLowerCase()) ||
+        task.priority.toLowerCase().includes(this.value.toLowerCase())
+      ) {
         taskTable += `<tr>
             <td class="text-left text-td p-1 pb-0">${task.name}</td>
             <td class="text-left text-td p-1 pb-0">${task.date}</td>
@@ -145,3 +150,31 @@ document.getElementById("searchinput").onkeyup = function () {
     checkdisplay();
   }
 };
+
+// ************** updatetask ****************
+function updatetask(index) {
+  currentUpdatedRow = index;
+  document.getElementById("tododate").value = tasksListArray[index].date;
+  document.getElementById("newtask").value = tasksListArray[index].name;
+  document.getElementById("taskpriority").value =
+    tasksListArray[index].priority;
+  document.getElementById("updatetask").style.display = "inline-block";
+  document.getElementById("addtask").style.display = "none";
+}
+document.getElementById("updatetask").onclick = function () {
+  tasksListArray[currentUpdatedRow].date =
+    document.getElementById("tododate").value;
+  tasksListArray[currentUpdatedRow].name =
+    document.getElementById("newtask").value;
+  tasksListArray[currentUpdatedRow].priority =
+    document.getElementById("taskpriority").value;
+  document.getElementById("updatetask").style.display = "none";
+  document.getElementById("addtask").style.display = "inline-block";
+  displaytodo();
+  clearinputs()
+};
+
+function clearinputs() {
+  document.getElementById("tododate").value = "";
+  document.getElementById("newtask").value = "";
+}
