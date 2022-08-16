@@ -160,6 +160,7 @@ function updatetask(index) {
     tasksListArray[index].priority;
   document.getElementById("updatetask").style.display = "inline-block";
   document.getElementById("addtask").style.display = "none";
+  scrollToTop()
 }
 document.getElementById("updatetask").onclick = function () {
   tasksListArray[currentUpdatedRow].date =
@@ -177,4 +178,7 @@ document.getElementById("updatetask").onclick = function () {
 function clearinputs() {
   document.getElementById("tododate").value = "";
   document.getElementById("newtask").value = "";
+}
+function scrollToTop() {
+  window.scrollTo(0, 0);
 }
