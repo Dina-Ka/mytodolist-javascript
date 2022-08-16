@@ -10,7 +10,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="css/style.css" rel="stylesheet">
+    <!-- Fontawsome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
+    <!-- Sweetalert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <style>
     :root {
@@ -149,23 +153,25 @@
             <!-- Main Table -->
             <div class="maintablesection">
 
-                <div class="mt-5  p-4  tasklist pt-0">
+                <div class="mt-5  p-4  tasklist pt-1">
                     <!-- Export -->
-                    <lord-icon src="https://cdn.lordicon.com/biwxmlnf.json" trigger="hover" class="tt"
-                        style="width:30px;height:30px" data-bs-toggle="tooltip" data-bs-placement="top" title="Export">
-                    </lord-icon>
+                    <span id="exportdata">
+                        <lord-icon src="https://cdn.lordicon.com/biwxmlnf.json" trigger="hover" class="tt"
+                            style="width:30px;height:30px" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Export">
+                        </lord-icon>
+
+                    </span>
 
                     <!-- Trash -->
-                    <lord-icon src="https://cdn.lordicon.com/dovoajyj.json" trigger="hover" class="tt"
-                        style="width:30px;height:30px" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Clear All">
-                    </lord-icon>
+                    <span id="clearallbtn">
+                        <lord-icon src="https://cdn.lordicon.com/dovoajyj.json" trigger="hover" class="tt"
+                            style="width:30px;height:30px" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Clear All">
+                        </lord-icon>
+                    </span>
 
-                    <!-- Done with selected -->
-                    <lord-icon src="https://cdn.lordicon.com/hjeefwhm.json" trigger="hover" class="tt"
-                        style="width:80;height:80px" data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Done with Selected">
-                    </lord-icon>
+
 
                     <div class="text-center pt-0 pb-2">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
@@ -173,29 +179,17 @@
                         <h2 class="my-2 taskstitle">Task List</h2>
                     </div>
 
-                    <table class="table table-hover" >
+                    <table class="table table-hover">
                         <thead>
                             <tr>
-                                <td class="text-center"></td>
-                                <td class="text-center tableheaderele"><b>Task Name</b></td>
-                                <td class="text-center tableheaderele"><b>Due Date</b></td>
-                                <td class="text-center tableheaderele"><b>Priority</b></td>
-                                <td class="text-center tableheaderele"><b>Action</b></td>
+                                <td class="text-left tableheaderele p-1"><b>Task Name</b></td>
+                                <td class="text-left tableheaderele p-1"><b>Due Date</b></td>
+                                <td class="text-center tableheaderele p-1"><b>Priority</b></td>
+                                <td class="text-center tableheaderele p-1"><b>Action</b></td>
                             </tr>
                         </thead>
                         <tbody id="tasktable">
-                            <tr>
-                                <td class="text-center text-td"><input type="checkbox" value="" data-taskid=""></td>
-                                <td class="text-center text-td">Need to check Hamada bo2o</td>
-                                <td class="text-center text-td">19-02-2022</td>
-                                <td class="text-center text-td"><span class="badge bg-danger">High</span></td>
-                                <td class="text-center">
-                                    <i class="fa fa-trash text-danger"></i>
-                                    <i class="fa fa-edit text-success"></i>
-                                </td>
-                            </tr>
-                      
-                          
+
                         </tbody>
 
                     </table>
