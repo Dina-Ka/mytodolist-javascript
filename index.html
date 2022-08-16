@@ -76,8 +76,15 @@
     tbody .text-td {
         font-size: .6em;
     }
-    .tableheaderele{
+
+    .tableheaderele {
         font-size: 13px;
+    }
+
+    @media (min-width: 1200px) {
+        h2 {
+            font-size: 1.3rem;
+        }
     }
 </style>
 
@@ -105,28 +112,32 @@
                 <div class="row">
                     <div class=" col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 mb-2 ">
                         <div class="form-floating ">
-                            <input type="text" class="form-control p-1" id="newtask" placeholder="name@example.com">
-                            <label for="taskname" class="p-1 px-2 floatingplaceholder">Email address</label>
+                            <input type="text" class="form-control p-1" id="newtask" placeholder="task name">
+                            <label for="taskname" class="p-1 px-2 floatingplaceholder">Task Name</label>
                         </div>
                     </div>
-                    <div class=" col-sm-12 col-md-1 col-lg-1 col-xl-1 col-xxl-1 mb-2">
-                        <div class=" pt-2 ">
-                            <i class="fas fa-calendar-alt fa-lg iconcolor" aria-hidden="true"></i>
-                            <span class="datespan">13/10/2022</span>
+                    <div class=" col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mb-2">
+                        <div class="" style="width:100%;">
+                            <div style="width:15% ;" class="d-inline-block">
+                                <i class="fas fa-calendar-alt fa-lg iconcolor" aria-hidden="true"></i>
+                            </div>
+                            <div style="width:80% ;" class="d-inline-block">
+                                <input class="form-control p-1 py-2" type="date" name="tododate" id="tododate">
+                            </div>
                         </div>
                     </div>
 
                     <div class=" col-sm-12 col-md-2 col-lg-2 col-xl-2 col-xxl-2 mb-2">
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                                <option value="1">High</option>
-                                <option value="2">Medium</option>
-                                <option value="3">Low</option>
+                            <select class="form-select" id="taskpriority" aria-label="Floating label select example">
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
                             </select>
-                            <label for="floatingSelect">Works with selects</label>
+                            <label for="taskpriority">Works with selects</label>
                         </div>
                     </div>
-                    <div class=" col-sm-12 col-md-1 col-lg-1 col-xl-1 col-xxl-1  text-end mb-2">
+                    <div class=" col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12  text-end mb-12">
                         <div class=" pt-1">
                             <button class="btn btn-sm text-white " id="addtask" type="button">Add Task</button>
                         </div>
@@ -138,7 +149,7 @@
             <!-- Main Table -->
             <div class="maintablesection">
 
-                <div class="mt-5  p-4  tasklist">
+                <div class="mt-5  p-4  tasklist pt-0">
                     <!-- Export -->
                     <lord-icon src="https://cdn.lordicon.com/biwxmlnf.json" trigger="hover" class="tt"
                         style="width:30px;height:30px" data-bs-toggle="tooltip" data-bs-placement="top" title="Export">
@@ -151,20 +162,18 @@
                     </lord-icon>
 
                     <!-- Done with selected -->
-                    <lord-icon src="https://cdn.lordicon.com/hjeefwhm.json" trigger="hover"  class="tt"
-                        style="width:80;height:80px" 
-                        data-bs-toggle="tooltip" data-bs-placement="top"
-                        title="Done with Selected"
-                        >
+                    <lord-icon src="https://cdn.lordicon.com/hjeefwhm.json" trigger="hover" class="tt"
+                        style="width:80;height:80px" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Done with Selected">
                     </lord-icon>
 
-                    <div class="text-center pt-3 pb-2">
+                    <div class="text-center pt-0 pb-2">
                         <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp"
                             alt="Check" width="60">
                         <h2 class="my-2 taskstitle">Task List</h2>
                     </div>
 
-                    <table class="table table-hover">
+                    <table class="table table-hover" >
                         <thead>
                             <tr>
                                 <td class="text-center"></td>
@@ -174,7 +183,7 @@
                                 <td class="text-center tableheaderele"><b>Action</b></td>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tasktable">
                             <tr>
                                 <td class="text-center text-td"><input type="checkbox" value="" data-taskid=""></td>
                                 <td class="text-center text-td">Need to check Hamada bo2o</td>
@@ -185,12 +194,12 @@
                                     <i class="fa fa-edit text-success"></i>
                                 </td>
                             </tr>
+                      
+                          
                         </tbody>
 
                     </table>
                 </div>
-
-
             </div>
             <!-- End:: Main Table -->
         </div>
@@ -217,15 +226,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
+    <script src="js/main.js"></script>
     <!-- Loard Icon -->
     <script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
     <script>
-        var Tooltips = document.getElementsByClassName('tt')
-        console.log(Tooltips);
-        Array.from(Tooltips).forEach(element => {
-            new bootstrap.Tooltip(element)
-        });
+
     </script>
 
 </body>
