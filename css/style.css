@@ -1,0 +1,99 @@
+:root {
+    --purple: #444791
+}
+
+.header-section {
+    background: whitesmoke;
+}
+
+.nav-bg,
+#addtask,
+.footer-bg {
+    background: var(--purple);
+}
+
+.form-floating>.form-control,
+.form-floating>.form-select {
+    height: calc(2.5rem + 2px);
+}
+
+label.floatingplaceholder {
+    color: #8d8d8d;
+}
+
+.iconcolor {
+    color: var(--purple)
+}
+
+.tasklist {
+    border-radius: 1em;
+    background: #e1e2f1;
+}
+
+.taskstitle {
+    color: var(--purple);
+}
+
+
+
+.form-floating>label {
+    padding: 0.4rem .75rem;
+}
+
+.datespan {
+    font-size: 10px;
+}
+
+.form-floating>.form-select {
+    padding-top: 0.6rem;
+    padding-bottom: 0rem;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+tbody .text-td {
+    font-size: .6em;
+}
+
+.tableheaderele {
+    font-size: 13px;
+}
+
+@media (min-width: 1200px) {
+    h2 {
+        font-size: 1.3rem;
+    }
+}
+
+#date {
+    width: 150px;
+    outline: none;
+    border: 1px solid #aaa;
+    padding: 6px 28px;
+    color: #aaa;
+}
+
+.date-container {
+    position: relative;
+}
+
+.date-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    /* pointer-events: none; */
+    cursor: pointer;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}

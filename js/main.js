@@ -2,11 +2,11 @@
 var addTaskBtn;
 var tasksListArray = [];
 var task = {};
-var priorityColor = { 
-  'High':'danger',
-  'Low':'success', 
-  'Medium':'info'
-}
+var priorityColor = {
+  High: "danger",
+  Low: "success",
+  Medium: "info",
+};
 
 // Tool tip
 var Tooltips = document.getElementsByClassName("tt");
@@ -41,7 +41,9 @@ function displaytodo() {
     taskTable += `<tr>
       <td class="text-left text-td p-1 pb-0">${task.name}</td>
       <td class="text-left text-td p-1 pb-0">${task.date}</td>
-      <td class="text-center text-td p-1 pb-0"><span class="badge bg-${priorityColor[`${task.priority}`]}">${task.priority} </span> </td>
+      <td class="text-center text-td p-1 pb-0"><span class="badge bg-${
+        priorityColor[`${task.priority}`]
+      }">${task.priority} </span> </td>
       <td class="text-center p-0">
         <i class="fa fa-trash text-danger deletetask" onclick=deletetask(${index})></i>
         <i class="fa fa-edit text-success updatetask" onclick=updatetask(${index})></i>
@@ -86,13 +88,16 @@ function deletetask(id) {
 // localStorage.getItem('todo'))
 window.onload = function () {
   tasksListArray = JSON.parse(localStorage.getItem("todo"));
-  console.log(tasksListArray);
+  checkdisplay();
+};
+
+function checkdisplay() {
   if (tasksListArray) {
     displaytodo();
   } else {
     displaynorecord();
   }
-};
+}
 // *************** Action Buttons ******************
 // Clear All
 document.getElementById("clearallbtn").onclick = function () {
@@ -114,3 +119,29 @@ document.getElementById("clearallbtn").onclick = function () {
   });
 };
 
+// ********** search **************
+// indexof lastindexof search charat
+document.getElementById("searchinput").onkeyup = function () {
+  if (this.value.length) {
+    var taskTable = "";
+    tasksListArray.forEach((task, index) => {
+
+      if (task.name.toLowerCase().includes(this.value.toLowerCase()) || task.priority.toLowerCase().includes(this.value.toLowerCase()) ) {
+        taskTable += `<tr>
+            <td class="text-left text-td p-1 pb-0">${task.name}</td>
+            <td class="text-left text-td p-1 pb-0">${task.date}</td>
+            <td class="text-center text-td p-1 pb-0"><span class="badge bg-${
+              priorityColor[`${task.priority}`]
+            }">${task.priority} </span> </td>
+            <td class="text-center p-0">
+              <i class="fa fa-trash text-danger deletetask" onclick=deletetask(${index})></i>
+              <i class="fa fa-edit text-success updatetask" onclick=updatetask(${index})></i>
+            </td>
+      </tr>`;
+      }
+      document.getElementById("tasktable").innerHTML = taskTable;
+    });
+  } else {
+    checkdisplay();
+  }
+};
